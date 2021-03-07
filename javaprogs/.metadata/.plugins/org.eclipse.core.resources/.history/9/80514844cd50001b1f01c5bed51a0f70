@@ -1,0 +1,15 @@
+package see;
+
+class First extends Thread{
+	public void display(String msg) throws InterruptedException{
+		 System.out.print("["+msg);
+		 Thread.sleep(1000);
+		 System.out.println("]");
+	}
+}
+
+
+
+public class P9 {
+
+}

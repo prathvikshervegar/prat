@@ -1,0 +1,30 @@
+package see;
+
+import java.util.Scanner;
+
+import p1.Intarr;
+
+public class P1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the number of values");
+		int n = s.nextInt();
+		System.out.println("Enter the values");
+		int[] arr = new int[n];
+		for(int i=0;i<n;i++){
+			int val = s.nextInt();
+			arr[i] = val;
+		}
+		Intarr obj = new Intarr();
+		System.out.println("Minimum value = "+obj.min(arr));
+		System.out.println("Enter scale factor");
+		int val = s.nextInt();
+		obj.scale(arr,val);
+		for(int i:arr){
+			System.out.println(i+"\t");
+		}
+	}
+
+}

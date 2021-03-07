@@ -1,0 +1,10 @@
+package see;
+
+abstract class Figure{
+	int x,y;
+	abstract int area();
+}
+
+public class P3 {
+
+}

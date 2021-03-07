@@ -1,0 +1,17 @@
+package see;
+
+class Studoent{
+	int rno;
+	String name;
+	Stuodent(int usn,String name){
+		this.rno=usn;
+		this.name=name;
+	}
+	void show() {
+		System.out.println("USN:"+rno+"\nName:"+name);
+	}
+}
+
+public class P5 {
+
+}

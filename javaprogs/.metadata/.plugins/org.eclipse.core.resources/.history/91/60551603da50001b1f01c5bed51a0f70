@@ -1,0 +1,43 @@
+package see;
+
+import java.io.*;
+import java.net.*;
+
+public class UDPserver {
+	private static DatagramSocket ds;
+	private static DatagramPacket in,out;
+	private static int port=1234;
+	private static byte buffer[];
+	public static void main(String[] args) throws SocketException {
+		ds=new DatagramSocket(port);
+		System.out.println("Opening Port...");
+		handleclient();
+	}
+	public static void handleclient() {
+		buffer=new byte[256];
+		String msgin="",msgout="";
+		int n=0;
+		InetAddress host= in.getAddress();
+		int cp=in.getPort();
+		try {
+		do {
+			in=new DatagramPacket(buffer, buffer.length);
+			ds.receive(in);
+			msgin=new String(in.getData(),0,in.getLength());
+			n++;
+			System.out.println("Message Recieved");
+			msgout="Message"+n+":"+msgin;
+			out=new DatagramPacket(msgout.getBytes(), msgout.length(),host,cp);
+			ds.send(out);
+		}while(msgin!="Close");
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			ds.close();
+			System.out.println("Closing connection...");
+			System.exit(1);
+		}
+	}
+}

@@ -1,0 +1,49 @@
+package see;
+
+import java.util.Random;
+
+class T1 extends Thread{
+	int val;
+	T1(int n){
+		val=n;
+	}
+	public void run() {
+		for(int i=1;i<=3;i++) {
+			System.out.println("Square"+(val + i) + ": " + Math.pow((val + i), 2));
+			 try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+class T2 extends Thread{
+	int val;
+	T2(int n){
+		val=n;
+	}
+	public void run() {
+		for(int i=1;i<=3;i++) {
+			System.out.println("Cube of"+(val + i) + ": " + Math.pow((val + i), 3));
+			 try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+public class P6 {
+	public static void main(String[] args) {
+		Random rand = new Random();
+		 int x = rand.nextInt(11);
+		 System.out.println(x+"\n");
+		 T1 thread1 = new T1(x);
+		 thread1.start();
+		 T2 thread2 = new T2(x);
+		 thread2.start();
+	}
+}

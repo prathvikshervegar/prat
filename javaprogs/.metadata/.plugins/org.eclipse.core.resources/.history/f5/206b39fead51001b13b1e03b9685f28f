@@ -1,0 +1,74 @@
+package see;
+
+import java.sql.*;
+import java.util.Scanner;
+
+class Studentdet{
+	static Connection con;
+	static Statement stm;
+	static ResultSet rs;
+	Studentdet() throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.jdbc.Driver");
+		con=DriverManager.getConnection("jdbc:mysql://172.16.2.3/student","student","student");
+		stm=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+		rs=stm.executeQuery("select * from st");
+	}
+	void insert() throws SQLException {
+		Scanner s=new Scanner(System.in);
+		System.out.println("Enter USN");
+		int usn=s.nextInt();
+		System.out.println("Enter name");
+		String name=s.next();
+		rs.moveToInsertRow();
+		rs.updateInt("usn", usn);
+		rs.updateString("name", name);
+		rs.insertRow();
+	}
+	void update() throws SQLException {
+		Scanner s1= new Scanner(System.in);
+		System.out.println("Enter row to be updated");
+		int r=s1.nextInt();
+		rs.absolute(r);
+		System.out.println("Enter new name");
+		String fname= s1.nextLine();
+		rs.updateString("name", fname);
+		rs.updateRow();
+	}
+	void search() throws SQLException {
+		Scanner s2= new Scanner(System.in);
+		System.out.println("Enter USN to be searched");
+		int usn=s2.nextInt();
+		int pos=0;
+		while(rs.next()) {
+			if(usn==rs.getInt(1)) {
+				System.out.println(rs.getString(2));
+				pos=1;
+			}
+		}
+		if(pos==0) {
+			System.out.println("USN not found");
+		}
+	}
+}
+
+public class JDBCst {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		Studentdet st=new Studentdet();
+		Scanner s=new Scanner(System.in);
+		boolean flag=true;
+		while(flag) {
+			System.out.println("!.Insert 2.Update 3.Search 4.Exit\nEnter choice");
+			int ch=s.nextInt();
+			switch(ch) {
+			case 1:st.insert();
+			break;
+			case 2:st.update();
+			break;
+			case 3:st.search();
+			break;
+			default:flag=false;
+			break;
+			}
+		}
+	}
+}
