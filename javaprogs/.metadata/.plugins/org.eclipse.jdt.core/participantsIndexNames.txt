@@ -1,7 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\prath\Desktop\javaprograms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4090565999.index
-\jspexample\src
-C:\Users\prath\Desktop\javaprogs\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4090565999.index
-\jspexample\src
-C:\Users\prath\Desktop\javaprogs\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1055517561.index
-\sudheshbvc\src

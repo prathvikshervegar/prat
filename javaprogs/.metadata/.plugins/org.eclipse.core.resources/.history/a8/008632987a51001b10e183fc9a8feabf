@@ -1,9 +1,0 @@
-package see;
-
-class bank{
-	
-}
-
-public class JDBCbank {
-
-}
